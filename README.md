@@ -35,7 +35,7 @@ A powerful Reddit data scraping tool with a user-friendly Streamlit interface. E
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/reddit-scraper.git
+git clone https://github.com/pakagronglb/reddit-scraper.git
 cd reddit-scraper
 ```
 
