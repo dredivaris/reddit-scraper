@@ -9,8 +9,6 @@
 
 A powerful Reddit data scraping tool with a user-friendly Streamlit interface. Extract posts and comments from subreddits or specific posts with ease.
 
-![App Screenshot](screenshot.png)
-
 ## 🚀 Features
 
 - 📱 User-friendly web interface
