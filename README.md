@@ -1,5 +1,7 @@
 # Reddit Data Scraper 📊
 
+![Screenshot 2024-12-10 162954](https://github.com/user-attachments/assets/65a9c7be-359b-48aa-9104-55b43fe0d351)
+
 [![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)](https://www.python.org)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.29.0-FF4B4B.svg)](https://streamlit.io)
 [![PRAW](https://img.shields.io/badge/PRAW-7.7.1-orange.svg)](https://praw.readthedocs.io)
