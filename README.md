@@ -134,6 +134,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📧 Contact
 
-Your Name - [@pakagronglb](https://twitter.com/pakagronglb)
+Pakagrong Lebel - [@pakagronglb](https://twitter.com/pakagronglb)
 
 Project Link: [https://github.com/pakagronglb/reddit-scraper](https://github.com/pakagronglb/reddit-scraper)
