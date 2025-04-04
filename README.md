@@ -13,7 +13,7 @@ A powerful Reddit data scraping tool with a user-friendly Streamlit interface. E
 
 - 📱 User-friendly web interface
 - 🔍 Scrape posts from any subreddit
-- 💬 Extract comments from specific posts
+- 💬 Extract comments from specific posts with parent-child relationships
 - 📊 Export data to CSV
 - ⏱️ Time-based filtering
 - 🔄 Caching for better performance
@@ -72,6 +72,16 @@ streamlit run main.py
    - **Specific Post**: Enter the Reddit post URL
 
 4. Click "Scrape" and download the results as CSV
+
+### Comment Hierarchy
+
+When scraping a specific post, the tool now captures parent-child relationships between comments:
+
+- **Comment ID**: Unique identifier for each comment
+- **Parent ID**: ID of the parent comment or submission
+- **Is Top Level**: Indicates if the comment is a direct reply to the post (True) or a reply to another comment (False)
+
+This allows you to reconstruct the full comment tree and understand the conversation flow. The downloaded CSV file will always include these relationship fields, even if they're hidden in the display view.
 
 ## 🌐 Deployment
 
