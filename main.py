@@ -4,6 +4,9 @@ import os
 from dotenv import load_dotenv
 import streamlit as st
 
+# Import Gemini chat functionality
+from gemini_chat import display_chat_interface
+
 # Load environment variables only in development
 if os.path.exists('.env'):
     load_dotenv()
@@ -90,6 +93,16 @@ def get_post_by_url(_reddit, url):
         return pd.DataFrame(), pd.DataFrame()
 
 def main():
+    # Initialize session state for chat interface and post data
+    if "show_chat" not in st.session_state:
+        st.session_state.show_chat = False
+    if "post_df" not in st.session_state:
+        st.session_state.post_df = None
+    if "comments_df" not in st.session_state:
+        st.session_state.comments_df = None
+    if "post_url" not in st.session_state:
+        st.session_state.post_url = ""
+
     st.title("Reddit Data Scraper")
 
     # Initialize Reddit instance
@@ -137,12 +150,25 @@ def main():
     else:
         st.header("Post URL Scraper")
 
-        post_url = st.text_input("Enter Reddit post URL:")
+        # Use session state to persist the URL
+        post_url = st.text_input("Enter Reddit post URL:", value=st.session_state.post_url)
+        st.session_state.post_url = post_url
+
+        # Add a chat toggle in the sidebar
+        if st.session_state.post_df is not None:
+            st.sidebar.divider()
+            st.sidebar.subheader("Chat Options")
+            chat_enabled = st.sidebar.checkbox("Enable Chat with Post", value=st.session_state.show_chat)
+            st.session_state.show_chat = chat_enabled
 
         if st.button("Scrape Post"):
             with st.spinner("Scraping post and comments..."):
                 try:
                     post_df, comments_df = get_post_by_url(reddit, post_url)
+
+                    # Store in session state
+                    st.session_state.post_df = post_df
+                    st.session_state.comments_df = comments_df
 
                     st.subheader("Post Details")
                     st.dataframe(post_df)
@@ -194,8 +220,18 @@ def main():
 
                     # Add a note about the CSV content
                     st.caption("Note: The downloaded CSV will include all comment data including parent-child relationships, even if they're hidden in the display.")
+
+                    # Add chat option
+                    st.divider()
+                    st.button("Chat with this post", key="chat_button", on_click=lambda: setattr(st.session_state, 'show_chat', True))
+
                 except Exception as e:
                     st.error(f"An error occurred: {str(e)}")
+
+        # Display chat interface if enabled and we have post data
+        if st.session_state.show_chat and st.session_state.post_df is not None:
+            st.divider()
+            display_chat_interface(st.session_state.post_df, st.session_state.comments_df)
 
 if __name__ == "__main__":
     main()

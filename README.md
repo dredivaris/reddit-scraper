@@ -14,6 +14,7 @@ A powerful Reddit data scraping tool with a user-friendly Streamlit interface. E
 - 📱 User-friendly web interface
 - 🔍 Scrape posts from any subreddit
 - 💬 Extract comments from specific posts with parent-child relationships
+- 🤖 Chat with posts using Gemini AI
 - 📊 Export data to CSV
 - ⏱️ Time-based filtering
 - 🔄 Caching for better performance
@@ -24,12 +25,14 @@ A powerful Reddit data scraping tool with a user-friendly Streamlit interface. E
 - **Streamlit** - Web interface framework
 - **PRAW** - Reddit API wrapper
 - **Pandas** - Data manipulation and analysis
+- **Google Gemini** - AI chat capabilities
 - **python-dotenv** - Environment variable management
 
 ## 📋 Prerequisites
 
 - Python 3.9 or higher
 - Reddit API credentials ([Get them here](https://www.reddit.com/prefs/apps))
+- Google API key for Gemini ([Get it here](https://ai.google.dev/))
 
 ## ⚙️ Installation
 
@@ -56,6 +59,7 @@ Create a `.env` file in the project root:
 REDDIT_CLIENT_ID=your_client_id
 REDDIT_CLIENT_SECRET=your_client_secret
 REDDIT_USER_AGENT=your_user_agent
+GOOGLE_API_KEY=your_google_api_key
 ```
 
 ## 🚀 Usage
@@ -72,6 +76,8 @@ streamlit run main.py
    - **Specific Post**: Enter the Reddit post URL
 
 4. Click "Scrape" and download the results as CSV
+
+5. For specific posts, you can also chat with the post content using the "Chat with this post" button
 
 ### Comment Hierarchy
 
@@ -104,6 +110,7 @@ heroku create your-app-name
 heroku config:set REDDIT_CLIENT_ID=your_client_id
 heroku config:set REDDIT_CLIENT_SECRET=your_client_secret
 heroku config:set REDDIT_USER_AGENT=your_user_agent
+heroku config:set GOOGLE_API_KEY=your_google_api_key
 ```
 
 3. Deploy:
